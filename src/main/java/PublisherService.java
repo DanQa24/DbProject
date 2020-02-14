@@ -20,10 +20,8 @@ public class PublisherService {
             publisher.setName(result.getString(2));
             publisher.setCountry(result.getString(3));
             publishers.add(publisher);
-
         }
 
         return publishers;
     }
-
 }

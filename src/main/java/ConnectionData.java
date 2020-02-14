@@ -1,24 +1,34 @@
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
 
 public final class ConnectionData {
-    private final static String URL = "localhost:5432/dana";
-    private final static String JDBC_URL = "jdbc:postgresql://" + URL;
-    private final static String USER = "postgres";
-    private final static  String PSWD = "learnjavaDana";
-
-    private ConnectionData() {
-    }
+    private ConnectionData() {}
 
     public static String getJdbcUrl() {
-        return JDBC_URL;
+        return properties().getProperty("jdbcUrl");
     }
 
     public static String getUser() {
-        return USER;
+        return properties().getProperty("user");
     }
 
     public static String getPswd() {
-        return PSWD;
+        return properties().getProperty("pswd");
+    }
+
+
+    private static Properties properties() {
+        Properties properties = new Properties();
+        String dbPropFile = "/Users/dana/Projects/JdbcConnect.properties";
+        try {
+            FileReader reader = new FileReader(dbPropFile);
+            properties.load(reader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties;
     }
 
 }
