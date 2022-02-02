@@ -1,10 +1,9 @@
-import java.io.IOException;
 import java.sql.*;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException{
 
       Connection connection = ConnectionFactory.createConnection();
 
